@@ -319,6 +319,10 @@
     }
     ,{
         "caption": "Git: Open Url",
-        "command": "git_open_config_url", "args": { "url_param": "remote.origin.url" }
+        "command": "git_open_config_url", "args": { "url_param": "remote.origin.url"}
+    }
+    ,{
+        "caption": "Git: What Changed in Commit",
+        "command": "git_what_changed_commit"
     }
 ]
