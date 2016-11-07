@@ -105,6 +105,11 @@ class GitLogCommand(GitLog, GitTextCommand):
 class GitLogAllCommand(GitLog, GitWindowCommand):
     pass
 
+class GitWhatChangedCommit(GitLog, GitWindowCommand):
+    def log_result(self, ref):
+        self.run_command(
+            ['git', 'whatchanged', '-1', ref],
+            self.details_done)
 
 class GitShow(object):
     def run(self, edit=None):
