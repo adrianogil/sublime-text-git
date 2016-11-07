@@ -134,6 +134,12 @@ class GitWhatChangedCommit(GitLog, GitWindowCommand):
             ['git', 'whatchanged', '-1', ref],
             self.details_done)
 
+class GitHist(GitLog, GitWindowCommand):
+    def log_result(self, ref):
+        self.run_command(
+            ['git', 'log', "--pretty=format:'%h %ad | %s%d [%an]' --graph --date=short", ref],
+            self.details_done)
+
 class GitShow(object):
     def run(self, edit=None):
         # GitLog Copy-Past

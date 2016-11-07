@@ -329,4 +329,8 @@
         "caption": "Git: What Changed in Commit",
         "command": "git_what_changed_commit"
     }
+    ,{
+        "caption": "Git: Commits Summary",
+        "command": "git_hist"
+    }
 ]
