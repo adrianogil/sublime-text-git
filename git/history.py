@@ -128,6 +128,12 @@ class GitLogCommand(GitLog, GitTextCommand):
 class GitLogAllCommand(GitLog, GitWindowCommand):
     pass
 
+class GitWhatChangedAll(GitLog, GitWindowCommand):
+    def run(self, edit=None):
+        self.run_command(
+            ['git', 'whatchanged', 'HEAD'],
+            self.details_done)
+
 class GitWhatChangedCommit(GitLog, GitWindowCommand):
     def log_result(self, ref):
         self.run_command(
@@ -135,9 +141,9 @@ class GitWhatChangedCommit(GitLog, GitWindowCommand):
             self.details_done)
 
 class GitHist(GitLog, GitWindowCommand):
-    def log_result(self, ref):
+    def run(self, edit=None):
         self.run_command(
-            ['git', 'log', "--pretty=format:'%h %ad | %s%d [%an]' --graph --date=short", ref],
+            ['git', 'log', "--pretty=format:%h %ad | %s%d [%an]", 'HEAD'],
             self.details_done)
 
 class GitShow(object):
