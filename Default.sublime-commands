@@ -326,6 +326,10 @@
         "command": "git_what_changed_commit"
     }
     ,{
+        "caption": "Git: What Changed All",
+        "command": "git_what_changed_all"
+    }
+    ,{
         "caption": "Git: Commits Summary",
         "command": "git_hist"
     }
