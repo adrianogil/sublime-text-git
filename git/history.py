@@ -74,6 +74,23 @@ class GitWtfCommand(GitBlameCommand):
         )
 
 
+class GitCompleteLog(object):
+    def run(self, edit=None):
+        return self.log_result()
+
+    def log_result(self):
+        # I'm not certain I should have the file name here; it restricts the
+        # details to just the current file. Depends on what the user expects...
+        # which I'm not sure of.
+        self.run_command(
+            ['git', 'log', '--no-color', '-p', self.get_file_name()],
+            self.details_done)
+
+    def details_done(self, result):
+        self.scratch(result, title="Git Commit Details",
+                     syntax=plugin_file("syntax/Git Commit View.tmLanguage"))
+
+
 class GitLog(object):
     def run(self, edit=None):
         fn = self.get_file_name()
@@ -120,6 +137,9 @@ class GitLog(object):
         self.scratch(result, title="Git Commit Details",
                      syntax=plugin_file("syntax/Git Commit View.tmLanguage"))
 
+
+class GitLogFileCompleteCommand(GitCompleteLog, GitTextCommand):
+    pass
 
 class GitLogCommand(GitLog, GitTextCommand):
     pass
